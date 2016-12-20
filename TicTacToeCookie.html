@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+
+
+	<style>
+
+	.square{
+
+		width: 100px;
+		height: 100px;
+		font-size: 50px;
+
+	}
+
+	.v{
+		border-left: 1px solid ;
+		border-right: 1px solid ;
+	}
+
+	.h{
+		border-top: 1px solid ;
+		border-bottom: 1px solid ;
+	}
+	.f{
+		border-color: blue;
+	}
+	.s{
+		border-color: red;
+	}
+	
+
+	</style>
+</head>
+<body onload = "startGame();">
+
+<center>	<h1> Tic Tac Toe </h1> </center>
+<div id = "message"> Message will go here </div>
+
+<center>
+
+	<div id ="board">
+		<table>
+			<tr id = "row1">
+			
+				<td class = "square" id = "p1" onclick="nextMove(this)">  
+					
+				</td>
+
+
+				<td class = "square v"  id = "p2" onclick="nextMove(this)">
+						
+				</td>
+
+				<td class = "square"  id = "p3" onclick="nextMove(this)"> 
+					   	
+				</td>
+
+			</tr>
+
+			<tr id = "row2">
+				<td class = "square h" id = "p4" onclick="nextMove(this)">  
+					 	
+				</td>
+
+				<td class = "square v h" id = "p5" onclick="nextMove(this)"> 	
+					
+				</td>
+
+				<td class = "square h" id = "p6" onclick="nextMove(this)">  
+					 	
+				</td>
+
+			</tr>
+
+			<tr id = "row3">
+				<td class ="square"  id = "p7" onclick="nextMove(this)"> 
+					  		
+				</td>
+
+				<td class ="square v"  id = "p8" onclick="nextMove(this)">
+					  		
+				</td>
+
+				<td class ="square" id = "p9" onclick="nextMove(this)">  
+					 		
+				</td>
+
+			</tr>
+		</table>
+	</div>
+
+	<p id = "demo">  </p>
+	<p id = "demo1"> </p>
+	<p id = "demo2"> </p>
+
+
+	<script type="text/javascript">
+
+	<!--
+
+
+	function startGame(){
+
+		document.turn = "O";
+		document.winner = null;		
+	}
+
+	function setMessage(msg){
+		document.getElementById("message").innerText = msg;
+	}
+
+	function nextMove(value){
+		if(document.winner != null){
+			setCookie(stage);
+			setMessage(document.winner + " already won the game. ");
+		}
+		else if(value.innerText ==""){
+		 	value.innerText = document.turn;
+			switchTurn();
+		}
+	}
+
+	function switchTurn(){
+		if(checkForWinner(document.turn)){
+			setMessage(document.turn + " Win " );
+			document.winner = document.turn;
+		}else if(document.turn =="X")
+		{
+			document.turn = "O";
+		}else {
+			document.turn = "X";
+		}
+		
+	}
+
+	function checkForWinner(move){
+		var result = false;
+		if(checkRoll(1,2,3,move) || checkRoll(4,5,6,move)||
+			checkRoll(7,8,9,move) ||checkRoll(1,4,7,move) ||
+			checkRoll(2,5,8,move) ||checkRoll(3,6,9,move) ||
+			checkRoll(1,5,9,move) ||checkRoll(3,5,7,move)){
+			result = true;
+		}
+		return result;
+
+	}
+
+	function checkRoll(a,b,c,move){
+		var check = false;
+		if(getBox(a)== move && getBox(b) == move && getBox(c)== move){
+			check = true;
+		}
+		return check;
+	}
+
+	function getBox (number){
+		return document.getElementById("p" + number).innerText;
+	}
+
+
+	
+
+</script>
+
+</center>
+</body>
+</html>
